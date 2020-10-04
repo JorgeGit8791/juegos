@@ -201,21 +201,39 @@ button {
         height: auto;
     }
     
+    .enlace {
+        grid-column: 1 / span 5;
+        grid-row: 1;
+        padding: 2rem;
+        background-color: 3px solid red ;
+    }
+
     .enlace nav {
-        display: flex;
-        flex-flow: row wrap;
+        width: 100%;
+        display: inline-flex;
         justify-content: space-around;
+
+    }
+    .enlace nav section {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-evenly;
         padding: 0;
         margin: 0;
         list-style: none;
     }
 
     button {
-        width: 4rem;
+        display: flex;
+        overflow: hidden;
+        width: 5rem;
         height: 3rem;
         padding: 0;
         margin: 0;
         font-size: .5rem;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
     }
     
     .header nav section {
