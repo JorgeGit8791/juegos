@@ -1,12 +1,10 @@
 body {
     display: grid;
-    /* background-color: var(--second-color); */
     background-color: var(--oscuro);
 }
 
 
 .grid {
-    /* background-color: var(--second-modal-color); */
     padding: 20px;
     font-size: var(--font-size);
 }
@@ -120,3 +118,118 @@ button {
     width: 30%;
     padding-left: 2rem;
 }
+
+/*************************************************************************************************************************************/
+/* ************************** response para movil******************************************************************* */
+
+
+@media screen and (max-width: 800px) {
+    body {
+        display: inline-block;
+    }
+
+    .header {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    h1,
+    .header nav {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+        
+    .header nav section {
+        justify-content: center;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    h1 {
+        display: block;
+        text-align: center;
+        padding: 2vh 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .enlace nav section {
+        display: inline;
+        justify-content: center;
+        padding-top: 2rem;
+        padding-left: 10%;
+    }
+
+
+
+    .nav-footer {
+        display: inline;
+        width: 100%;
+        font-size: .7rem;
+
+        
+    }
+}
+
+
+@media screen and (max-width: 580px) {
+    body {
+        display: inline-block;
+    }
+
+    .header {
+        display: block;
+        padding: 0;
+        margin: 0;
+    }
+
+    h1,
+    .header nav {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+        
+    .header nav section {
+        justify-content: center;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    h1 {
+        display: block;
+        text-align: center;
+        padding: 2vh 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .enlace nav section {
+        display: inline;
+        margin: 5px;
+        padding: 0;
+    }
+
+    button {
+        margin: 0;
+        display: inline;
+        padding: 0;
+    }
+
+
+
+    .nav-footer {
+        display: inline;
+        width: 100%;
+        font-size: .7rem;
+
+        
+    }
+}
+
