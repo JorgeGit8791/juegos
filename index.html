@@ -12,7 +12,7 @@
         <h1>JUEGOS DE RAZONAMIENTO</h1>
         <nav>
             <section id="menu">
-                <a class="" href="">Menu Principal</a>
+                <a class="none" href="">Menu Principal</a>
             </section>
             <section id="salir">
                 <a href="https://google.com">Salir</a>
@@ -22,14 +22,14 @@
     </header>
 
     <main class="grid">
-        <div id="info" class="none">
-            <article id="info-sect">
-                <button>Cerrar</button>
-                <section class="none">
-                    <h2>HACERCA DE MI</h2>
+        <div  class="info">
+            <article>
+                <button class="info-btn">Cerrar</button>
+                <section class="info-acerca none">
+                    <h2>ACERCA DE MI</h2>
                     <P>Emprendiendo en el mudo de la web poco a poco para ser un gran desarrollador.</P>
                 </section>
-                <section class="none">
+                <section class="info-contact none">
                     <h2>CONTACTO</h2>
                     <dl>
                         <dt>NOMBRE:</dt>
@@ -38,7 +38,7 @@
                         <dd>En matenimiento</dd>
                     </dl>
                 </section>
-                <section class="none">
+                <section class="info-descrip none">
                     <h2>DESCRIPCION DE LA WEB</h2>
                     <P>Esta  web fue diseñada para personas que les gusta estimular y poner en practica sus conocimiento mas creatividad.</P>
                 </section>
@@ -85,9 +85,9 @@
     </article>
     <footer class="grid">
         <nav class="nav-footer">
-            <section><a href="">Hacerca de mi</a></section>
-            <section><a href="">Contacto</a></section>
-            <section><a href="">Descripcion de la Web</a></section>
+            <section><a class="acerca" href="#">Acerca de mi</a></section>
+            <section><a class="contacto" href="#">Contacto</a></section>
+            <section><a class="descripcion" href="#">Descripcion de la Web</a></section>
         </nav>
     </footer>
 
@@ -97,6 +97,6 @@
 
 
 
-    <script src="js/juego.js"></script>
+    <script src="js/juego.js" type="module"></script>
 </body>
 </html>

@@ -16,6 +16,96 @@ body {
     background-color: var(--main-color);
 }
 
+.info {
+    position: fixed;
+    z-index: 900;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    
+    /* opacity: 0;*/
+    /* visibility: hidden; */
+    /*para que funcione tiene que desactiva las transform de direcciion
+     y actvar el opacity del hover active y visibility: visible; */
+    
+    transition: transform 0.3s ease;
+    
+    /* para que salga de arriba */
+    transform: translate(0,-100%);
+    
+    /* para que salga de abajo */
+    /* transform: translate(0,100%); */
+    
+    /* para que salga de la derecha */
+    /* transform: translate(100%,0); */
+    
+    /* para que aslga de la izquierda */
+    /* transform: translate(-100%,0); */
+}
+
+
+.info.is-active {
+    transform: translate(0,0);
+    /* opacity: 1; */
+    /* visibility: visible; */
+}
+.info-acerca,
+.info-descrip {
+    position: fixed;
+    z-index: 920;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: burlywood;
+    font-size: 3rem;  
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    padding: 2rem;
+    color: red;
+}
+
+* dt {
+    color: darkblue;
+    padding: 3vh;
+    font-size: 2rem;
+}
+
+* dd {
+    color: darkcyan;
+    padding: 3vh;
+    font-size: 1.8rem;
+}
+
+.info-contact {
+    position: fixed;
+    z-index: 920;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: burlywood;
+    /* display: flex;
+    flex-direction: column; */
+    padding: 20%;
+}
+
+.info-btn {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 940;
+}
+
 .none {
     display: none;
 }
