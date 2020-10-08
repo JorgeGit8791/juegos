@@ -63,7 +63,7 @@ body {
     right: 0;
     width: 100%;
     background-color: burlywood;
-    font-size: 3rem;  
+    font-size: 3vw;  
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -73,30 +73,49 @@ body {
     color: red;
 }
 
-* dt {
-    color: darkblue;
-    padding: 3vh;
+.info h2 {
+    text-align: center;
+}
+
+dl {
+    display: flex;
+    flex-flow: column wrap;
+    width: inherit;
+    height: 80vh;
+    /* border: 1px solid red; */
+    justify-content: space-evenly;
+    
+    
+}
+
+dt {
+    color: red;
+    /* text-align: initial; */
+    /* padding: 2vw; */
     font-size: 2rem;
 }
 
-* dd {
-    color: darkcyan;
-    padding: 3vh;
+dd {
+    color: #000;
+    text-align: center;
+    /* padding: 3vw; */
     font-size: 1.8rem;
 }
 
 .info-contact {
+    width: inherit;
+    height: inherit;
     position: fixed;
     z-index: 920;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    width: 100%;
     background-color: burlywood;
+    font-size: 3vw;
     /* display: flex;
     flex-direction: column; */
-    padding: 20%;
+    padding: auto;
 }
 
 .info-btn {
