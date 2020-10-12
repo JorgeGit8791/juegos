@@ -1,26 +1,36 @@
-export default function info(acerca,contacto,descripcion,cerrar){
+export default function info(footerNav,cerrar){
     const d = document;
 
 
     d.addEventListener("click", (e)=> {
-        
-        const ventana = clase => {
+
+        const footer = d.querySelectorAll(footerNav);
+        console.log(e)
+            
+        if(e.target.matches(".nav-footer *")){
             e.preventDefault();
+            footer.forEach(el => {
+                // console.log(e.target.className === el.className);
+                // console.log(el.className);
+                if(e.target.className === el.className) {
+                    d.querySelector(`.info-${el.className}`).classList.remove("none");
+                    // d.querySelector(`.info-contact`).classList.remove("none");
+                    console.log(`.${el.className} :  true`)
+                }else {
+                    d.querySelector(`.info-${el.className}`).classList.add("none");
+                    console.log(`.${el.className} :  false`)
+                }
+            })
             d.querySelector(".info").classList.add("is-active");
-            d.querySelector(clase).classList.remove("none");        
-        }
-        
-        if(e.target.matches(acerca)){
-            ventana(".info-acerca");
-        }else if(e.target.matches(contacto)) {
-            ventana(".info-contact");
-        }else if(e.target.matches(descripcion)) {
-            ventana(".info-descrip");
-        }else if(e.target.matches(cerrar)) {
-            d.querySelector(".info-acerca").classList.add("none");
-            d.querySelector(".info-contact").classList.add("none");
-            d.querySelector(".info-descrip").classList.add("none");
+
+            
+        } else if ( e.target.matches(cerrar)) {
+            e.preventDefault();
+            footer.forEach(el => d.querySelector(`.info-${el.className}`).classList.add("none"));
             d.querySelector(".info").classList.remove("is-active");
+
         }
+
+        
     });
 }

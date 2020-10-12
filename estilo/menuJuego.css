@@ -1,365 +1,120 @@
-body {
-    display: grid;
-    background-color: var(--oscuro);
-}
-
-
-.grid {
-    padding: 20px;
-    font-size: var(--font-size);
-}
-
-.header {
-    grid-column: 1 / span 5;
-    grid-row: 1;
-    overflow: hidden;
-    background-color: var(--main-color);
-}
-
-.info {
-    position: fixed;
-    z-index: 900;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    overflow: hidden;
-    background-color: white;
-    
-    /* opacity: 0;*/
-    /* visibility: hidden; */
-    /*para que funcione tiene que desactiva las transform de direcciion
-     y actvar el opacity del hover active y visibility: visible; */
-    
-    transition: transform 0.3s ease;
-    
-    /* para que salga de arriba */
-    transform: translate(0,-100%);
-    
-    /* para que salga de abajo */
-    /* transform: translate(0,100%); */
-    
-    /* para que salga de la derecha */
-    /* transform: translate(100%,0); */
-    
-    /* para que aslga de la izquierda */
-    /* transform: translate(-100%,0); */
-}
-
-
-.info.is-active {
-    transform: translate(0,0);
-    /* opacity: 1; */
-    /* visibility: visible; */
-}
-.info-acerca,
-.info-descrip {
-    position: fixed;
-    z-index: 920;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: burlywood;
-    font-size: 3vw;  
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    padding: 2rem;
-    color: red;
-}
-
-.info h2 {
-    text-align: center;
-}
-
-dl {
-    display: flex;
-    flex-flow: column wrap;
-    width: inherit;
-    height: 80vh;
-    /* border: 1px solid red; */
-    justify-content: space-evenly;
-    
-    
-}
-
-dt {
-    color: red;
-    /* text-align: initial; */
-    /* padding: 2vw; */
-    font-size: 2rem;
-}
-
-dd {
-    color: #000;
-    text-align: center;
-    /* padding: 3vw; */
-    font-size: 1.8rem;
-}
-
-.info-contact {
-    width: inherit;
-    height: inherit;
-    position: fixed;
-    z-index: 920;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: burlywood;
-    font-size: 3vw;
-    /* display: flex;
-    flex-direction: column; */
-    padding: auto;
-}
-
-.info-btn {
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    z-index: 940;
-}
-
-.none {
-    display: none;
-}
-
-
 main {
-    /* grid-column: 1; */
-    /* grid-row: 2 / span 2; */
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: row2-start;
-    grid-row-end: 3;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    font-size: 16px;
+    margin-bottom: 8vw;
+}
+
+.textContent {
+    width: 70%;
 }
 
 .enlace {
-    grid-column-start: 3 ;
-    grid-column-end: 5;
-    grid-row-start: row2-start;
-    grid-row-end: 3;
-}
-
-footer {
-    grid-column: 1 / span 3;
-    grid-row: 4;
-}
-
-
-h1,
-.header nav {
-    display: inline-flex;
-    /* overflow: hidden; */
-}
-
-h1 {
-    display: inline-flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    width: 70%;
+    width: 30%;
     height: auto;
-    color: white;
-}
-
-.header nav {
-    width: 28%;
-    justify-content: space-between;
-    /* justify-content: center; */
-    /* overflow: hidden; */
-}
-.header nav section {
-    display: inline-flex;
-    padding: auto;
-    /* overflow: hidden; */
-}
-
-a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: red;
-    transition: all 0.3s ease;
-}
-
-a:hover {
-    transform: scale(1.1,1.2);
-}
-
-h2 {
-    color: blue;
-    font-size: 2rem;
-}
-
-p {
-    color: white;
-    font-size: 1rem;
-    padding-left: 2rem;
 }
 
 .enlace nav {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-}
-
-.enlace nav section {
     display: flex;
-    flex-direction: column;
-    height: 33%;
-    padding-top: 2rem;
-    margin-left: 0;
-    justify-content: center;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+
     align-content: center;
 }
 
-button {
-    background-color: var(--main-color);
-    border-radius: 50%;
-    height: 3.5rem;
-    align-content: center;
-    outline: 0;
+
+
+p {
+    color: white;
+    overflow: hidden;
+}
+h2 {
+    color: blue;
+    font-size: 32px;
+    overflow: hidden;
 }
 
-.nav-footer {
-    position: absolute;
-    min-width: 70%;
-    color: tomato;
-    right: 0;
-}
-.nav-footer section {
-    display: inline-flex;
-    box-sizing: border-box;
-    width: 30%;
-    padding-left: 2rem;
+button:hover {
+    transform: scale(1.1,1.2);
 }
 
-/*************************************************************************************************************************************/
-/* ************************** response para movil******************************************************************* */
 
-
-@media screen and (max-width: 800px) {      
-
-
-    h1 {
-        text-align: center;
-        padding: 2vh 0;
-        margin: 0;
+@media screen and (max-width: 800px) {
+    main {
         width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column wrap;
     }
 
-    .header nav  {
-        display: inline-flex;
+    .textContent {
         width: 100%;
-        align-items: center;
-        justify-content: space-evenly;
-        padding: 0;
-        margin: 0;
-        list-style: none;
+        padding: 1.5rem;
     }
 
-    .nav-footer {
-        display: inline;
-        font-size: .7rem;
-
-        
-    }
-}
-
-
-@media screen and (max-width: 580px) {
-    body {
-        display: inline-block;
-    }
-
-    .header {
-        display: block;
-        padding: 0;
-        margin: 0;
-    }
-    .header nav {
-        width: 100%;
-        height: auto;
-    }
-    
     .enlace {
-        grid-column: 1 / span 5;
-        grid-row: 1;
-        padding: 2rem;
-        background-color: 3px solid red ;
+        width: 100%;
     }
 
     .enlace nav {
-        width: 100%;
-        display: inline-flex;
-        justify-content: space-around;
-
+        flex-flow: row wrap;
     }
-    .enlace nav section {
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-evenly;
-        padding: 0;
+}
+
+@media screen and (max-width: 400px) {
+    main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-flow: column-reverse wrap;
+    }
+
+    .textContent {
+        width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+        overflow: auto;
+        margin-bottom: 7vw;
+        font-size: 4vw;
+    }
+
+    .enlace {
+        width: 100%;
+        display: flex;
+        flex-flow: column wrap;
+    }
+    
+    .enlace nav {
+        width: 100%;
         margin: 0;
-        list-style: none;
+        padding: 0;
+        flex-flow: column wrap;
+        align-items: center;
     }
 
     button {
-        display: flex;
-        overflow: hidden;
-        width: 5rem;
-        height: 3rem;
+        width: 100vw;
+        height: 2rem;
         padding: 0;
-        margin: 0;
-        font-size: .5rem;
-        justify-content: center;
+        margin: 1vw;
+        border-radius: initial;
+        background-color: green;
+        color: indigo;
         align-content: center;
-        align-items: center;
+        outline: 0;
     }
     
-    .header nav section {
-        justify-content: center;
-        text-align: center;
-        margin: 0;
-        padding: 0;
+    h2 {
+        font-size: 1rem;
     }
-
-
-    h1 {
-        display: block;
-        text-align: center;
-        padding: 2vh 0;
-        margin: 0;
-        width: 100%;
-    }
-
-    .nav-footer {
-        width: 100%;
-    }
- 
-    .nav-footer section {
-        display: inline-flex;
-        justify-content: space-between;
-        padding: 0;
-        margin: 0;
-    }
-
-    .nav-footer section a {
-        display: inline-flex;
-        justify-content: space-between;
-        align-items: center;
-
-        font-size: .7rem;
-    }
-
-
-
+    
 }
+
+
+
+/*************************************************************************************************************************************/
+/* ************************** response para movil******************************************************************* */
 

@@ -1,0 +1,131 @@
+body {
+    display: grid;
+    background-color: var(--oscuro);
+}
+
+
+.grid {
+    padding: 20px;
+    font-size: var(--font-size);
+}
+
+.header {
+    grid-column: 1 / span 5;
+    grid-row: 1;
+    overflow: hidden;
+    background-color: var(--main-color);
+}
+
+.info {
+    position: fixed;
+    z-index: 900;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    overflow: hidden;
+    background-color: white;
+    
+    /* opacity: 0;*/
+    /* visibility: hidden; */
+    /*para que funcione tiene que desactiva las transform de direcciion
+     y actvar el opacity del hover active y visibility: visible; */
+    
+    transition: transform 0.3s ease;
+    
+    /* para que salga de arriba */
+    transform: translate(0,-100%);
+    
+    /* para que salga de abajo */
+    /* transform: translate(0,100%); */
+    
+    /* para que salga de la derecha */
+    /* transform: translate(100%,0); */
+    
+    /* para que aslga de la izquierda */
+    /* transform: translate(-100%,0); */
+}
+
+
+.info.is-active {
+    transform: translate(0,0);
+    /* opacity: 1; */
+    /* visibility: visible; */
+}
+.info-acerca,
+.info-descrip {
+    position: fixed;
+    z-index: 920;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: burlywood;
+    font-size: 3vw;  
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    padding: 2rem;
+    color: red;
+}
+
+.info h2 {
+    text-align: center;
+}
+
+dl {
+    display: flex;
+    flex-flow: column wrap;
+    width: inherit;
+    height: 80vh;
+    /* border: 1px solid red; */
+    justify-content: space-evenly;
+    
+    
+}
+
+dt {
+    color: red;
+    /* text-align: initial; */
+    /* padding: 2vw; */
+    font-size: 2rem;
+}
+
+dd {
+    color: #000;
+    text-align: center;
+    /* padding: 3vw; */
+    font-size: 1.8rem;
+}
+
+.info-contact {
+    width: inherit;
+    height: inherit;
+    position: fixed;
+    z-index: 920;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: burlywood;
+    font-size: 3vw;
+    /* display: flex;
+    flex-direction: column; */
+    padding: auto;
+}
+
+.info-btn {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 940;
+}
+
+.none {
+    display: none;
+} 
+ 
