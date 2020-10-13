@@ -9,7 +9,7 @@
 </head>
 <body>
     <header class="header grid">
-        <h1>JUEGOS DE RAZONAMIENTO</h1>
+        <h1>SUDOKU</h1>
         <nav class="header-nav">
             <section id="menu">
                 <a  href="../index.html">Menu Principal</a>
@@ -43,8 +43,42 @@
                 </section>
             </article>
         </div>
-        <div class="ejecutar"></div>
-        <div class="sudoku"></div>
+        <div class="ejecutar">
+            <section class="ejecutar-form">
+                <form id="empezarDificultad" action="">
+                    <legend>Elige tus opciones</legend><br>
+                    <select name="tamaño" id="tamaño">
+                        <option value="smoll">Tamaño :  9 x 9</option>
+                        <option value="big">Tamaño :  12 x 12</option>
+                    </select><br>
+                    <select name="dificultad" id="dificultad">
+                        <option value="facil">Facil</option>
+                        <option value="dificil">Dificil</option>
+                    </select><br>
+                    <input type="submit" value="Empezar Partida">
+                </form>
+            </section>
+            <section class="bottons">
+                <button>Nuevo Juego</button>
+                <button>Cargar</button>
+                <button>Crear Juego</button>
+            </section>
+            <section class="count">
+                <h2>CONTEO</h2>
+                <div id="countime">
+                    <h3>1234</h3>
+                    <h3>5667</h3>
+                </div>
+            </section>
+        </div>
+        <div class="sudoku">
+            <div id="sudoku"></div>
+        </div>
+        <div class="publicidad">
+            <figure>
+                <img src="https://placeimg.com/200/200/any" alt="any">
+            </figure>
+        </div>
     </main>
 
     <footer>

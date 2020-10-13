@@ -63,7 +63,7 @@ body {
     align-items: center;
     align-content: center;
     /* border: 1px solid blue; */
-    background: yellow;    
+    background: var(--main-modal-color);    
     overflow: hidden;
 }
 
