@@ -5,7 +5,7 @@ export default function info(footerNav,cerrar){
     d.addEventListener("click", (e)=> {
 
         const footer = d.querySelectorAll(footerNav);
-        console.log(e)
+        // console.log(e)
             
         if(e.target.matches(".nav-footer *")){
             e.preventDefault();
@@ -15,10 +15,10 @@ export default function info(footerNav,cerrar){
                 if(e.target.className === el.className) {
                     d.querySelector(`.info-${el.className}`).classList.remove("none");
                     // d.querySelector(`.info-contact`).classList.remove("none");
-                    console.log(`.${el.className} :  true`)
+                    // console.log(`.${el.className} :  true`)
                 }else {
                     d.querySelector(`.info-${el.className}`).classList.add("none");
-                    console.log(`.${el.className} :  false`)
+                    // console.log(`.${el.className} :  false`)
                 }
             })
             d.querySelector(".info").classList.add("is-active");

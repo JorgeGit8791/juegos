@@ -96,7 +96,7 @@ button:hover {
         align-items: center;
     }
 
-    button {
+    .enlace nav button {
         width: 100vw;
         height: 2rem;
         padding: 0;
