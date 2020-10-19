@@ -1,24 +1,34 @@
-export default function sudoku(empezarDidicultad,array) {
+
+export default function sudoku(empezarDidicultad) {
     const d = document;
     d.addEventListener("submit" , e => {
 
         const fragmento = d.createDocumentFragment(),
-            array = array,
-            tamaño = null,
             form = d.getElementById(empezarDidicultad),
-            container = d.querySelector(".container-grid");
-        // console.log(form.tamaño.value);
+            container = d.querySelector(".content-grid");
+
+        let tammaño = null;
+        console.log(form.tamaño.value);
         
         if(e.target === form){
             e.preventDefault();
-            (form.tammaño.value === "smoll")? tamaño = 9 : tamaño = 12;
-            for (let i = 0; i < tamaño*tamaño; i++) {
+            if(container) container.innerHTML = "";
+            (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
+            console.log(tammaño)
+            for (let i = 0; i < tammaño*tammaño; i++) {
+                console.log("esta en el bucle " + tammaño )
                 const div = d.createElement("div");
                 div.classList.add("grids");
-                fragmento *= fragmento.insertAdjacentElement("afterend",div);                
+                div.style.backgroundColor = "white";   
+                div.style.color = "black";
+                div.textContent = `${i + 1}`;            
+                fragmento.insertBefore(div, fragmento.childNodes[fragmento.childNodes.length]);
             }
-            container.appendChild(fragmento)
-
+            // console.log(fragmento.textContent)
+            container.appendChild(fragmento);
+            container.style.gridTemplateRows = `repeat(${tammaño}, 1fr)`;
+            container.style.gridTemplateColumns = `repeat(${tammaño}, 1fr)`;
+            
 
 
             

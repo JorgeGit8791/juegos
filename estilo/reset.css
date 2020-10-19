@@ -51,25 +51,9 @@ nav {
     width: 100%;
     overflow: hidden;
     background-color: white;
-    
-    /* opacity: 0;*/
-    /* visibility: hidden; */
-    /*para que funcione tiene que desactiva las transform de direcciion
-     y actvar el opacity del hover active y visibility: visible; */
     border: 1px solid red;
     transition: transform 0.3s ease;
-    
-    /* para que salga de arriba */
     transform: translate(0,-100%);
-    
-    /* para que salga de abajo */
-    /* transform: translate(0,100%); */
-    
-    /* para que salga de la derecha */
-    /* transform: translate(100%,0); */
-    
-    /* para que aslga de la izquierda */
-    /* transform: translate(-100%,0); */
 }
 
 .info-descrip, 
@@ -103,25 +87,19 @@ dl {
     flex-flow: column wrap;
     width: inherit;
     height: 80vh;
-    /* border: 1px solid red; */
     justify-content: space-evenly;
     align-items: center;
     align-content: space-around;
-    
-    
 }
 
 dt {
     color: red;
-    /* text-align: initial; */
-    /* padding: 2vw; */
     font-size: 2rem;
 }
 
 dd {
     color: #000;
     text-align: center;
-    /* padding: 3vw; */
     font-size: 1.8rem;
 }
 
@@ -136,8 +114,6 @@ dd {
     right: 0;
     background-color: burlywood;
     font-size: 3vw;
-    /* display: flex;
-    flex-direction: column; */
     padding: auto;
 }
 
@@ -165,11 +141,9 @@ dd {
 }
 
 .nav-footer a:hover {
-    /* transform: scale(0.8,1.1); */
     color: #f7df1e;
 }
 .header-nav a:hover {
-    /* transform: scale(0.8,1.1); */
     color: purple;
 }
 
@@ -194,7 +168,6 @@ body {
     background-color: var(--main-modal-color);
     color: white;
     overflow: hidden;
-    border: 1px solid yellow;
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: 70% 30%;
@@ -211,13 +184,11 @@ body {
 }
 
 main {
-    border: 1px solid red;
     grid-column: 1 / -1;
     grid-row: 2 / 3;
 }
 
 footer {
-    border: 1px solid green;
     grid-column: 1 / -1;
     grid-row: 3 / -1;
 }
