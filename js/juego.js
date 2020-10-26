@@ -1,4 +1,5 @@
 import sudoku from "./modulos/enlace.js";
+import escrituraMovimiento from "./modulos/escritura.js";
 import info from "./modulos/info.js";
 
 document.addEventListener("DOMContentLoaded",(e) => {
@@ -6,3 +7,7 @@ document.addEventListener("DOMContentLoaded",(e) => {
     sudoku("empezarDificultad")
 
 });
+
+document.addEventListener("keydown", (e) => {
+    escrituraMovimiento(e);
+})
