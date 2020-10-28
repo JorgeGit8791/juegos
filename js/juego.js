@@ -9,5 +9,5 @@ document.addEventListener("DOMContentLoaded",(e) => {
 });
 
 document.addEventListener("keydown", (e) => {
-    escrituraMovimiento(e);
+    escrituraMovimiento(e,".grids input",".content-grid");
 })

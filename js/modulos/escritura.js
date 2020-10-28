@@ -1,13 +1,17 @@
 const d = document;
 
-export default function escrituraMovimiento(e) {
-    // console.log(Number(e.key));
-    // console.log(e.target);
-    // console.log(e.key)
-    // console.log(e)
+export default function escrituraMovimiento(e,input,caja) {
     
+    const inputs = d.querySelectorAll(input),
+        cajaGrids = d.querySelector(caja);
     
-
-    if(!Number(e.key))  e.preventDefault();
+    //  console.log(e.key)
+    // if(e.target.matches(inputs)){
+    //     inputs.forEach(el => {
+    //         if(!Number(e.key)) {
+    //             el.textContent = "";
+    //         }
+    //     })
+    }  
 
 }
