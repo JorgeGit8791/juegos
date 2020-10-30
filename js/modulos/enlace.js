@@ -16,6 +16,8 @@ export default function sudoku(empezarDidicultad) {
             if(container.matches("div")) container.innerHTML = "";
             (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
             for (let i = 0; i < tammaño*tammaño; i++) {
+
+                inputs.name = i;
                 const div =  d.createElement("div"),
                     clon = d.importNode(inputs,true);
                 div.classList.add("grids");

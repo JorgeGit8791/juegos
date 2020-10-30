@@ -8,6 +8,6 @@ document.addEventListener("DOMContentLoaded",(e) => {
 
 });
 
-document.addEventListener("keydown", (e) => {
+document.addEventListener("keyup", (e) => {
     escrituraMovimiento(e,".grids input",".content-grid");
 })

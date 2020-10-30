@@ -147,6 +147,7 @@ input[type="text"] {
     }
 
     .publicidad {
+        margin: 1rem;
         grid-column: 1 / -1;
         grid-row: 2 / 3;
     }
@@ -245,6 +246,10 @@ input[type="text"] {
         height: 30px;
         font-size: 3vw;
     }
+}
+
+.publicidad {
+    margin: 1rem;
 }
 
 
