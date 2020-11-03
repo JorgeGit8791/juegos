@@ -1,25 +1,53 @@
+let cont = 0 ;
+const d = document,
+    container = d.querySelector(".content-grid");
+export default function sudoku(empezarDidicultad, arrays, newPlayer) {
 
-export default function sudoku(empezarDidicultad) {
-    const d = document;
+     /******************* funcion de dar los valores estaticos ****************************************************************************************** */
+        
+     const numberPosition = (arr) => {
+        const inputContainer = container.querySelectorAll("input");
+
+        inputContainer.forEach(el => el.value = "");
+
+        arr[0].forEach((el, index) => {
+            
+            inputContainer[el].value = arr[1][index];
+            inputContainer[el].readOnly = true;
+            inputContainer[el].style.color = "#000";
+            
+        });
+        
+    }
+    /*************************************************************************************************************************************************************************** */
+
     d.addEventListener("submit" , e => {
+        /************** creacion de las variables ***************************************************************** */
 
         const fragmento = d.createDocumentFragment(),
-            form = d.getElementById(empezarDidicultad),
-            template = d.querySelector("template"),
-            inputs = template.content.querySelector("input"),
-            container = d.querySelector(".content-grid");
-            
-        let tammaño = null;
-            
+        form = d.getElementById(empezarDidicultad),
+        template = d.querySelector("template"),
+        inputs = template.content.querySelector("input");
+        /************************************************************************************************************************************* */
+        
+        
+        /**********  dar valor del tamaño de nuesto container sudoku ************************************************************************************** */
+        
+        let tammaño;
+        (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
+        /****************************************************************************************************************************************************** */
+        
+        /**************** creacion de nuestro container ****************************************************************************************************************************** */
+        
         if(e.target === form){
             e.preventDefault();
             if(container.matches("div")) container.innerHTML = "";
-            (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
             for (let i = 0; i < tammaño*tammaño; i++) {
 
                 inputs.name = i;
+                inputs.style.minWidth = "contain";
                 const div =  d.createElement("div"),
-                    clon = d.importNode(inputs,true);
+                clon = d.importNode(inputs,true);
                 div.classList.add("grids");
                 div.style.backgroundColor = "white";  
                 // div.style.color = "red";
@@ -40,13 +68,30 @@ export default function sudoku(empezarDidicultad) {
             }
             
             container.style.backgroundSize =  "0%";
+            
             container.appendChild(fragmento);
             container.style.gridTemplateRows = `repeat(${tammaño}, 1fr)`;
             container.style.gridTemplateColumns = `repeat(${tammaño}, 1fr)`;
+            numberPosition(arrays[cont]);
+            ++cont;
+            if(arrays.length <= cont) cont = 0; 
+        }
+        /************************************************************************************************************************************************************************* */
+
+    })
+    
+    d.addEventListener("click", e => {
+        const newPlay = d.getElementById(newPlayer);
+
+        /************************* ubicacion del sudoku con los arrays ****************************************************************************************************+ */
+        if(e.target === newPlay) {
+            numberPosition(arrays[cont]);
+            ++cont;
+            if(arrays.length <= cont) cont = 0;
+        } else {
+            return;
         }
     })
 }
-            
-
 
             

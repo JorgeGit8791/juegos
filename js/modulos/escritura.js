@@ -4,14 +4,14 @@ export default function escrituraMovimiento(e,input,caja) {
     const inputs = d.querySelectorAll(input),
     cajaGrids = d.querySelector(caja);
     
-    console.log(inputs)
+    // console.log(inputs)
     const direccion = (e,dir) => {
         const position = Number(e.target.name),
             movimiento = position + dir;
 
         if(movimiento < 0 || movimiento > inputs.length) return;
 
-        
+        inputs[movimiento].focus();
     }
     // console.log(e.target.name);
 
