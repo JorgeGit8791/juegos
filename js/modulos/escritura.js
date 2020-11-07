@@ -6,12 +6,24 @@ export default function escrituraMovimiento(e,input,caja) {
     
     // console.log(inputs)
     const direccion = (e,dir) => {
-        const position = Number(e.target.name),
-            movimiento = position + dir;
+        const position = Number(e.target.name);
+        let  movimiento = position + dir;
+
+        // e.preventDefault();
 
         if(movimiento < 0 || movimiento > inputs.length) return;
 
-        inputs[movimiento].focus();
+        for(let i=0;(movimiento < 0 || movimiento > inputs.length) === false;) {
+            const boleano = inputs[movimiento].hasAttribute("readonly");
+            if(boleano) {
+                movimiento = movimiento + dir;
+            } else {
+                inputs[movimiento].focus();
+                return;
+            }    
+            
+        }
+
     }
     // console.log(e.target.name);
 
