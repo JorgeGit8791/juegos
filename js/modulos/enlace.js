@@ -1,7 +1,9 @@
+"use strict"
 let cont = 0 ;
 const d = document,
     container = d.querySelector(".content-grid");
-export default function sudoku(empezarDidicultad, arrays, newPlayer) {
+export default function sudoku(empezarDidicultad, arrays, newPlayer,numberSudo) {
+    const numberSudoku = d.getElementById(numberSudo);
 
      /******************* funcion de dar los valores estaticos ****************************************************************************************** */
         
@@ -15,11 +17,24 @@ export default function sudoku(empezarDidicultad, arrays, newPlayer) {
             inputContainer[el].value = arr[1][index];
             inputContainer[el].readOnly = true;
             inputContainer[el].style.color = "#000";
-            
         });
         
     }
     /*************************************************************************************************************************************************************************** */
+
+    /****************** funcion de arrays de dificultad ********************************************************************************************************************** */
+    
+    const dific = () => {
+        if( tamaño === 9){
+            if(form.dificultad === facil){
+                return arrays.arr9.facil;
+            }else {
+                return arrays.arr9.dificil;
+            }
+        }
+    }
+
+    /************************************************************************************************************************************************** */
 
     d.addEventListener("submit" , e => {
         /************** creacion de las variables ***************************************************************** */
@@ -72,22 +87,37 @@ export default function sudoku(empezarDidicultad, arrays, newPlayer) {
             container.appendChild(fragmento);
             container.style.gridTemplateRows = `repeat(${tammaño}, 1fr)`;
             container.style.gridTemplateColumns = `repeat(${tammaño}, 1fr)`;
-            numberPosition(arrays[cont]);
+            numberPosition(arrays[`arr${tammaño}`][`${form.dificultad.value}`][cont]);
+            numberSudoku.innerHTML = `Sudoku ${cont+1} del nivel ${form.dificultad.value}`;
             ++cont;
-            if(arrays.length <= cont) cont = 0; 
+            if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0; 
         }
         /************************************************************************************************************************************************************************* */
 
     })
     
     d.addEventListener("click", e => {
-        const newPlay = d.getElementById(newPlayer);
+        const newPlay = d.getElementById(newPlayer),
+            inputContainer = container.querySelectorAll("input"),
+            form = d.getElementById(empezarDidicultad);
 
-        /************************* ubicacion del sudoku con los arrays ****************************************************************************************************+ */
+        /**********  dar valor del tamaño de nuesto container sudoku ************************************************************************************** */
+        
+        // console.log(inputContainer.length);
         if(e.target === newPlay) {
-            numberPosition(arrays[cont]);
+            let tammaño = (form.tamaño.value === "smoll")?  9 :  12;
+            if(inputContainer.length === 0) return;
+            if(inputContainer.length/tammaño !== tammaño){
+                alert("Cambiaste el tamaño del sudoku ahora debes de hacer click en Empezar Partida");
+                return;
+            };
+ /****************************************************************************************************************************************************** */
+
+ /************************* ubicacion del sudoku con los arrays ****************************************************************************************************+ */
+            numberSudoku.innerHTML = `Sudoku ${cont+1} del nivel ${form.dificultad.value}`;
+            numberPosition(arrays[`arr${tammaño}`][`${form.dificultad.value}`][cont]);
             ++cont;
-            if(arrays.length <= cont) cont = 0;
+            if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0;
         } else {
             return;
         }
