@@ -118,6 +118,10 @@ img {
     color: white;
     font-size: 1rem;
 }
+.count-p1 {
+    color: blue;
+    margin-bottom: 2vw;
+}
 
 .bottons button {
     width: 150px;
@@ -245,11 +249,17 @@ input[type="text"] {
         overflow: hidden;
         grid-column: 1 / 2;
         grid-row: 2 / 3;
+        padding: 1rem;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     .count-p2 {
         overflow: hidden;
+        padding: 2vw;
         grid-column: 2 / 3;
         grid-row: 2 / 3;
+        padding-top: 0;
+        padding-bottom: 0;
     }
     .content-grid {
         margin: 1rem;
