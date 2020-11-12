@@ -249,13 +249,13 @@ input[type="text"] {
         overflow: hidden;
         grid-column: 1 / 2;
         grid-row: 2 / 3;
-        padding: 1rem;
+        padding: .5rem;
         padding-top: 0;
         padding-bottom: 0;
     }
     .count-p2 {
         overflow: hidden;
-        padding: 2vw;
+        padding: 1.5vw;
         grid-column: 2 / 3;
         grid-row: 2 / 3;
         padding-top: 0;
@@ -266,7 +266,7 @@ input[type="text"] {
         width: initial;
     }
     .grids input {
-        font-size: 1.5r;
+        font-size: 1rem;
     }
 
 }
@@ -334,6 +334,12 @@ input[type="text"] {
     .grids {
         min-height: 2rem;
     }
+    .grids input {
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        overflow: visible;
+    }
 }
 
 
@@ -357,5 +363,12 @@ input[type="text"] {
         height: auto;
         padding-top: 1rem;
         overflow: hidden;
+    }
+
+    .grids input {
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+        overflow: visible;
     }
 }

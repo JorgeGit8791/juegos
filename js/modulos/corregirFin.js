@@ -1,11 +1,10 @@
 const d = document,
     colores = ["red","green","yellow","blueViolet","gray","chartreuse","chocolate","darkOrange","darkSlateGrey","fushsia","indigo","marron","cyan"];
 
-export default function correccionFinal(btnFin,content,input,fin){
+export default function correccionFinal(btnFin){
 
     const btn = d.getElementById(btnFin),
-        contents = d.querySelector(".content-grid"),
-        finPlay = d.getElementById(fin);
+        contents = d.querySelector(".content-grid");
     
     
     d.addEventListener("click", e => {
@@ -68,8 +67,7 @@ export default function correccionFinal(btnFin,content,input,fin){
 
             if(llenado) {
                 const seguirReto = confirm("Grandioso has pasado este reto ahora deseas comenzar otro reto: ");
-                if(seguirReto) d.getElementById("btn-newplayer").click();
-                finPlay.innerHTML = "";
+                if(seguirReto) d.getElementById("empezarDificultad").submitClick.click();
                 return;
             }
 

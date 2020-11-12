@@ -2,8 +2,31 @@
 let cont = 0 ;
 const d = document,
     container = d.querySelector(".content-grid");
-export default function sudoku(empezarDidicultad, arrays, newPlayer,numberSudo) {
+export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta) {
     const numberSudoku = d.getElementById(numberSudo);
+
+
+    /********************  funcion resolver ********************************************************************************************************* */
+    const resolverSudo = arr => {
+        const inputContent = container.querySelectorAll("input");
+
+        inputContent.forEach(el => el.value = "");
+        // inputContainer.forEach((el,index)=>el.value = index)
+        arr[2].forEach((el, index) => {            
+            inputContent[index].value = el;
+            inputContent[index].readOnly = true;
+            inputContent[index].style.color = "#000";
+        });
+    }
+
+
+
+
+
+
+
+
+/************************************************************************************************************************************************************** */
 
      /******************* funcion de dar los valores estaticos ****************************************************************************************** */
         
@@ -11,30 +34,15 @@ export default function sudoku(empezarDidicultad, arrays, newPlayer,numberSudo) 
         const inputContainer = container.querySelectorAll("input");
 
         inputContainer.forEach(el => el.value = "");
-
-        arr[0].forEach((el, index) => {
-            
+        // inputContainer.forEach((el,index)=>el.value = index)
+        arr[0].forEach((el, index) => {            
             inputContainer[el].value = arr[1][index];
             inputContainer[el].readOnly = true;
             inputContainer[el].style.color = "#000";
         });
-        
     }
     /*************************************************************************************************************************************************************************** */
 
-    /****************** funcion de arrays de dificultad ********************************************************************************************************************** */
-    
-    const dific = () => {
-        if( tamaño === 9){
-            if(form.dificultad === facil){
-                return arrays.arr9.facil;
-            }else {
-                return arrays.arr9.dificil;
-            }
-        }
-    }
-
-    /************************************************************************************************************************************************** */
 
     d.addEventListener("submit" , e => {
         /************** creacion de las variables ***************************************************************** */
@@ -58,9 +66,9 @@ export default function sudoku(empezarDidicultad, arrays, newPlayer,numberSudo) 
             e.preventDefault();
             if(container.matches("div")) container.innerHTML = "";
             for (let i = 0; i < tammaño*tammaño; i++) {
-
                 inputs.name = i;
                 inputs.style.minWidth = "contain";
+                if(tammaño === 12) inputs.maxLength = 2;  
                 const div =  d.createElement("div"),
                 clon = d.importNode(inputs,true);
                 div.classList.add("grids");
@@ -88,38 +96,25 @@ export default function sudoku(empezarDidicultad, arrays, newPlayer,numberSudo) 
             container.style.gridTemplateRows = `repeat(${tammaño}, 1fr)`;
             container.style.gridTemplateColumns = `repeat(${tammaño}, 1fr)`;
             numberPosition(arrays[`arr${tammaño}`][`${form.dificultad.value}`][cont]);
-            numberSudoku.innerHTML = `Sudoku ${cont+1} del nivel ${form.dificultad.value}`;
+            numberSudoku.innerHTML = `Sudoku ${cont+1} de ${arrays[`arr${tammaño}`][`${form.dificultad.value}`].length} del nivel ${form.dificultad.value}`;
             ++cont;
             if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0; 
         }
         /************************************************************************************************************************************************************************* */
 
-    })
-    
-    d.addEventListener("click", e => {
-        const newPlay = d.getElementById(newPlayer),
-            inputContainer = container.querySelectorAll("input"),
-            form = d.getElementById(empezarDidicultad);
+    });
 
-        /**********  dar valor del tamaño de nuesto container sudoku ************************************************************************************** */
-        
-        // console.log(inputContainer.length);
-        if(e.target === newPlay) {
-            let tammaño = (form.tamaño.value === "smoll")?  9 :  12;
-            if(inputContainer.length === 0) return;
-            if(inputContainer.length/tammaño !== tammaño){
-                alert("Cambiaste el tamaño del sudoku ahora debes de hacer click en Empezar Partida");
-                return;
-            };
- /****************************************************************************************************************************************************** */
+    d.addEventListener("click",e => {
+        const respuestaSudoku = d.getElementById(respuesta),
+            forms = d.getElementById(empezarDidicultad);
+            let tammaño;
+            (forms.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
+            
 
- /************************* ubicacion del sudoku con los arrays ****************************************************************************************************+ */
-            numberSudoku.innerHTML = `Sudoku ${cont+1} del nivel ${form.dificultad.value}`;
-            numberPosition(arrays[`arr${tammaño}`][`${form.dificultad.value}`][cont]);
-            ++cont;
-            if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0;
-        } else {
-            return;
+        console.log(cont);
+        if(e.target === respuestaSudoku){
+            let cunt = cont -1;
+            resolverSudo(arrays[`arr${tammaño}`][`${forms.dificultad.value}`][(cont === 0)? arrays[`arr${tammaño}`][`${forms.dificultad.value}`].length-1 : cunt])
         }
     })
 }
