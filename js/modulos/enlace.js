@@ -111,7 +111,7 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta) {
             (forms.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
             
 
-        console.log(cont);
+        // console.log(cont);
         if(e.target === respuestaSudoku){
             let cunt = cont -1;
             resolverSudo(arrays[`arr${tammaño}`][`${forms.dificultad.value}`][(cont === 0)? arrays[`arr${tammaño}`][`${forms.dificultad.value}`].length-1 : cunt])

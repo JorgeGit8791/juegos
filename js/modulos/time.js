@@ -1,54 +1,67 @@
 "use strict"
 const d = document;
+let segundo = 0,
+minuto = 0,
+hora = 0,
+dia = 0;
 
 
-
-export default function time(empezar,nuevoSudo,time,container,fin) {
+export default function time(empezar,resolver,reloj) {
     const play = d.getElementById(empezar),
-        btnFin = d.getElementById(fin), 
-        newPlay = d.getElementById(nuevoSudo),
-        times = d.querySelector(time),
-        containers = d.querySelector(container);
-    let tiempo,
-        tiempoPlay,
-        contenido;       
-        
-        
-    d.addEventListener("click", e => {
-        tiempoPlay = new Date();
-        console.log(e.target);
-        const inputContent = containers.querySelectorAll("input")
-        let tammaño = (play.tamaño.value === "smoll")?  9 :  12;
-        // console.log(inputContent.length);
-        if(inputContent.length/tammaño !== tammaño) return;
-        if(e.target === newPlay || e.target === btnFin) {
-            let setInter = () => {
-                tiempo = new Date();
-                contenido = `Empesaste ${tiempoPlay.getHours()}:${tiempoPlay.getMinutes()}:${tiempoPlay.getSeconds()} ---
-                Llevas ${tiempo.getHours()}:${tiempo.getMinutes()}:${tiempo.getSeconds()}`;
-                times.innerHTML = `${contenido}`;                    
+        textoTime = d.querySelector(reloj),
+        respuestaPlay = d.getElementById(resolver);
+    let times;
+
+
+    setInterval(times = function ()  {
+        console.log("paso por time");
+        ++segundo;
+        if(segundo > 59) {
+            ++minuto;
+            segundo = 0;
+            if(minuto > 59) {
+                ++hora;
+                minuto = 0;
+                if(hora === 24) {
+                    ++dia;
+                    hora = 0;
                 }
-                setInterval(setInter,1000);
             }
-            clearInterval(inter);
-    });
-    
-    
-    
-    d.addEventListener("submit", e => {
-        tiempoPlay = new Date();
-        const inputContent = containers.querySelectorAll("input")
-        let tammaño = (play.tamaño.value === "smoll")?  9 :  12;
-        // console.log(inputContent.length);
-        
-        if(inputContent.length/tammaño !== tammaño) return;
-        if(e.target === play) {
-            
-        
-        
+        }
+        textoTime.innerHTML = `${(dia > 0)?dia + ":": ""}${(hora === 0 && dia === 0)?"":hora + ":"}${(minuto === 0 && hora === 0)?"":(minuto < 10)?"0" + minuto + ":":minuto + ":"}${(segundo < 10)? "0" + segundo:segundo}`;
     }
-    });
+,1000);
 
     
+    
 
+    d.addEventListener("click", e => {
+        console.log(e.target)
+        
+        if(e.target === respuestaPlay){
+            console.log("paso por fin respusta");
+            // clearInterval(times);
+            // const parar = clearInterval(time);;
+        }
+        
+        if(e.target === play.submitClick) {
+            segundo = 0;
+            minuto = 0;
+            hora = 0;
+            dia = 0;
+            // setInterval(times).reload();
+            // clearInterval(times);
+            // setInterval(times,1000);
+            // setInterval(times,1000);
+            // timess;
+        }
+    });
+
+    // d.addEventListener("click", e => {
+    //     if(e.target === respuestaPlay) {
+    //         console.log("paso por fin respusta");
+    //         clearInterval(times);
+    //     }
+    // });
+    
 }

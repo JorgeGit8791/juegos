@@ -2,7 +2,7 @@ import correccionFinal from "./modulos/corregirFin.js";
 import sudoku from "./modulos/enlace.js";
 import escrituraMovimiento from "./modulos/escritura.js";
 import info from "./modulos/info.js";
-// import time from "./modulos/time.js";
+import time from "./modulos/time.js";
 
 
 const array9 = {
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded",(e) => {
     info(".nav-footer section a",".info-btn");
     sudoku("empezarDificultad",array9,"numeroSudoku","btn-resolver");
     correccionFinal("btn-finJuego",".content-grid", ".grids input");
-    // time("empezarDificultad","btn-newplayer",".count-p2",".content-grid","btn-finJuego");
+    time("empezarDificultad","btn-resolver",".count-p2",);
 });
 
 document.addEventListener("keyup", (e) => {

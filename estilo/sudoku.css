@@ -266,6 +266,7 @@ input[type="text"] {
         width: initial;
     }
     .grids input {
+        width: 100%;
         font-size: 1rem;
     }
 
