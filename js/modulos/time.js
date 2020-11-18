@@ -14,7 +14,7 @@ export default function time(empezar,resolver,reloj) {
 
 
     setInterval(times = function ()  {
-        console.log("paso por time");
+        // console.log("paso por time");
         ++segundo;
         if(segundo > 59) {
             ++minuto;
@@ -36,10 +36,10 @@ export default function time(empezar,resolver,reloj) {
     
 
     d.addEventListener("click", e => {
-        console.log(e.target)
+        // console.log(e.target)
         
         if(e.target === respuestaPlay){
-            console.log("paso por fin respusta");
+            // console.log("paso por fin respusta");
             // clearInterval(times);
             // const parar = clearInterval(time);;
         }

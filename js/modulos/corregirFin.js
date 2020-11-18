@@ -66,7 +66,8 @@ export default function correccionFinal(btnFin){
             llenado = (llenado === 0)? true:false;
 
             if(llenado) {
-                const seguirReto = confirm("Grandioso has pasado este reto ahora deseas comenzar otro reto: ");
+                const time = d.querySelector(".count-p2").textContent;
+                const seguirReto = confirm(`Grandioso has pasado este reto con un tiempo de ${time} Segdos.\nAhora deseas comenzar otro reto: `);
                 if(seguirReto) d.getElementById("empezarDificultad").submitClick.click();
                 return;
             }

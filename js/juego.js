@@ -1,6 +1,7 @@
 import correccionFinal from "./modulos/corregirFin.js";
 import sudoku from "./modulos/enlace.js";
 import escrituraMovimiento from "./modulos/escritura.js";
+import guardar from "./modulos/guardarUltimoJuego.js";
 import info from "./modulos/info.js";
 import time from "./modulos/time.js";
 
@@ -16,6 +17,7 @@ const array9 = {
                 [
                     [3,4,6,8,9,11,12,13,16,19,20,22,24,26,27,29,33,35,37,38,41,42,43,46,49,52,54,57,58,60,65,66,70,72,75,76,78,79],
                     [9,1,4,7,3,4,6,8,1,7,9,5,6,3,9,2,8,1,1,5,6,3,4,3,9,5,2,5,3,7,3,1,9,6,4,7,1,3],
+                    [5,8,6,9,1,3,4,2,7,3,2,4,6,8,7,9,1,5,1,7,9,2,5,4,6,8,3,9,6,2,3,4,5,8,7,1,8,1,5,7,2,6,3,4,9,4,3,7,8,9,1,2,5,6,2,9,1,5,3,8,7,6,4,7,4,3,1,6,2,5,9,8,6,5,8,4,7,9,1,3,2]
                 ],
                 [
                     [1,3,4,5,6,12,14,22,23,24,25,26,27,28,30,33,34,35,37,39,42,43,45,49,51,52,53,54,55,56,57,59,60,61,62,63,65,66,70,71,73,80],
@@ -72,9 +74,10 @@ const array9 = {
 
 document.addEventListener("DOMContentLoaded",(e) => {
     info(".nav-footer section a",".info-btn");
-    sudoku("empezarDificultad",array9,"numeroSudoku","btn-resolver");
+    sudoku("empezarDificultad",array9,"numeroSudoku","btn-resolver","btn-cargarGuardar");
     correccionFinal("btn-finJuego",".content-grid", ".grids input");
-    time("empezarDificultad","btn-resolver",".count-p2",);
+    time("empezarDificultad","btn-resolver",".count-p2");
+    guardar("btn-cargarGuardar",".content-grid",array9,"numeroSudoku","empezarDificultad");
 });
 
 document.addEventListener("keyup", (e) => {

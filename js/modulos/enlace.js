@@ -2,7 +2,7 @@
 let cont = 0 ;
 const d = document,
     container = d.querySelector(".content-grid");
-export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta) {
+export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,cargar) {
     const numberSudoku = d.getElementById(numberSudo);
 
 
@@ -99,6 +99,7 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta) {
             numberSudoku.innerHTML = `Sudoku ${cont+1} de ${arrays[`arr${tammaño}`][`${form.dificultad.value}`].length} del nivel ${form.dificultad.value}`;
             ++cont;
             if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0; 
+            form.submitClick.value = "Nuevo Juego";
         }
         /************************************************************************************************************************************************************************* */
 
@@ -106,12 +107,19 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta) {
 
     d.addEventListener("click",e => {
         const respuestaSudoku = d.getElementById(respuesta),
+            cargarSudo = d.getElementById(cargar),
             forms = d.getElementById(empezarDidicultad);
             let tammaño;
             (forms.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
             
-
-        // console.log(cont);
+        if(e.target === cargarSudo) {
+            let existirEnLocal = Number(localStorage.getItem("numeroSudoku"));
+            
+            if(existirEnLocal !== undefined) {
+                cont = existirEnLocal -1;
+            }
+        }
+        
         if(e.target === respuestaSudoku){
             let cunt = cont -1;
             resolverSudo(arrays[`arr${tammaño}`][`${forms.dificultad.value}`][(cont === 0)? arrays[`arr${tammaño}`][`${forms.dificultad.value}`].length-1 : cunt])
