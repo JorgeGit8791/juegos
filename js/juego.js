@@ -70,7 +70,7 @@ const array9 = {
         ]
     }
 }
-    
+
 
 document.addEventListener("DOMContentLoaded",(e) => {
     info(".nav-footer section a",".info-btn");

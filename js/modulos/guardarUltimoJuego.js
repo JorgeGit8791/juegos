@@ -9,25 +9,27 @@ export default function guardar(btnGuardar,conatiner,arr,infoSudo,form) {
             forms = d.getElementById(form),
             indexCasillas = [],
             valoresCasillas = [],
-            inputContainer = container.querySelectorAll("input");
+            inputContainer = container.querySelectorAll("input"),
+            numberSudoku = d.getElementById("numeroSudoku");
 
         let numberSudo,tamaño,dificultad;
 
         if(e.target === btn) {
             if(btn.textContent === "Cargar") {
 
+                
                 const indexCasillasLocal = localStorage.getItem("arrIndex"),
-                    valoresCasillasLocal = localStorage.getItem("arrValores");
-
+                valoresCasillasLocal = localStorage.getItem("arrValores");
+                
                 numberSudo = Number(localStorage.getItem("numeroSudoku")) - 1;
                 tamaño = Number(localStorage.getItem("tamaño"));
                 dificultad = localStorage.getItem("dificultad");
-
+                
                 forms.tamaño.value = (tamaño === 9)? "smoll":"big";
                 forms.dificultad.value = dificultad;
+                if(!numberSudo) return;
                
                 if(container.matches("div")) container.innerHTML = "";
-
                 
                 const fragmento = d.createDocumentFragment(),
                     template = d.querySelector("template"),
@@ -63,22 +65,29 @@ export default function guardar(btnGuardar,conatiner,arr,infoSudo,form) {
                 container.appendChild(fragmento);
                 container.style.gridTemplateRows = `repeat(${tamaño}, 1fr)`;
                 container.style.gridTemplateColumns = `repeat(${tamaño}, 1fr)`;
-                // numberSudoku.innerHTML = `Sudoku ${cont+1} de ${arrays[`arr${tamaño}`][`${forms.dificultad.value}`].length} del nivel ${forms.dificultad.value}`; 
                 forms.submitClick.value = "Nuevo Juego";
                 
+                
+                const numberPosition = (posicion,valores,arrays) => {
+                    const inputContainer = container.querySelectorAll("input");
+                    let posicions = posicion.split(",");
+                    let valor = valores.split(",");  
+                    
+                    inputContainer.forEach(el => el.value = "");
 
-                // const numberPosition = (arr) => {
-                //     const inputContainer = container.querySelectorAll("input");
-            
-                //     inputContainer.forEach(el => el.value = "");
-                //     // inputContainer.forEach((el,index)=>el.value = index)
-                //     arr[0].forEach((el, index) => {            
-                //         inputContainer[el].value = arr[1][index];
-                //         inputContainer[el].readOnly = true;
-                //         inputContainer[el].style.color = "#000";
-                //     });
-                // }
+                    posicions.forEach((el,index) => {          
+                        let numero = Number(el);
+                        inputContainer[numero].value = valor[index];
+                    });
 
+                    arrays[0].forEach(el => {
+                        inputContainer[el].readOnly = true;
+                        inputContainer[el].style.color = "#000";
+                    })
+                }
+                        
+                numberPosition(indexCasillasLocal,valoresCasillasLocal,arr[`arr${tamaño}`][dificultad][numberSudo]);
+                numberSudoku.innerHTML = `Sudoku ${numberSudo + 1} de ${arr[`arr${tamaño}`][dificultad].length} del nivel ${dificultad}`; 
                 btn.textContent = "Guardar Ultimo Juego";
                 
 

@@ -59,11 +59,13 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
         let tammaño;
         (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
         /****************************************************************************************************************************************************** */
-        
+        if(cont < 0 ) cont = 0;
+        // if(cont)
         /**************** creacion de nuestro container ****************************************************************************************************************************** */
         
         if(e.target === form){
             e.preventDefault();
+            d.getElementById("btn-cargarGuardar").textContent = "Guardar Ultimo Juego";
             if(container.matches("div")) container.innerHTML = "";
             for (let i = 0; i < tammaño*tammaño; i++) {
                 inputs.name = i;
@@ -89,6 +91,7 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
                 div.appendChild(clon);
                 fragmento.insertBefore(div, fragmento.childNodes[fragmento.childNodes.length]);
             }
+            if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0; 
             
             container.style.backgroundSize =  "0%";
             
@@ -98,7 +101,6 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
             numberPosition(arrays[`arr${tammaño}`][`${form.dificultad.value}`][cont]);
             numberSudoku.innerHTML = `Sudoku ${cont+1} de ${arrays[`arr${tammaño}`][`${form.dificultad.value}`].length} del nivel ${form.dificultad.value}`;
             ++cont;
-            if(arrays[`arr${tammaño}`][`${form.dificultad.value}`].length <= cont) cont = 0; 
             form.submitClick.value = "Nuevo Juego";
         }
         /************************************************************************************************************************************************************************* */
@@ -113,10 +115,10 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
             (forms.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
             
         if(e.target === cargarSudo) {
-            let existirEnLocal = Number(localStorage.getItem("numeroSudoku"));
-            
+            let existirEnLocal = Number(localStorage.getItem("numeroSudoku"))-1;
             if(existirEnLocal !== undefined) {
-                cont = existirEnLocal -1;
+                cont = existirEnLocal;
+                cont++;
             }
         }
         
