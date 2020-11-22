@@ -21,74 +21,76 @@ export default function guardar(btnGuardar,conatiner,arr,infoSudo,form) {
                 const indexCasillasLocal = localStorage.getItem("arrIndex"),
                 valoresCasillasLocal = localStorage.getItem("arrValores");
                 
-                numberSudo = Number(localStorage.getItem("numeroSudoku")) - 1;
+                numberSudo = localStorage.getItem("numeroSudoku");
                 tamaño = Number(localStorage.getItem("tamaño"));
                 dificultad = localStorage.getItem("dificultad");
                 
-                forms.tamaño.value = (tamaño === 9)? "smoll":"big";
-                forms.dificultad.value = dificultad;
-                if(!numberSudo) return;
-               
-                if(container.matches("div")) container.innerHTML = "";
+                if(numberSudo !== null) {
+                    forms.tamaño.value = (tamaño === 9)? "smoll":"big";
+                    forms.dificultad.value = dificultad;
                 
-                const fragmento = d.createDocumentFragment(),
-                    template = d.querySelector("template"),
-                    inputs = template.content.querySelector("input");
-
-                for (let i = 0; i < tamaño*tamaño; i++) {
-                    inputs.name = i;
-                    inputs.style.minWidth = "contain";
-                    if(tamaño === 12) inputs.maxLength = 2;  
-                    const div =  d.createElement("div"),
-                    clon = d.importNode(inputs,true);
-                    div.classList.add("grids");
-                    div.style.backgroundColor = "white";  
-                    // div.style.color = "red";
-                    if(i % 3 === 0) {
-                        div.style.borderLeftWidth = "4px";
-                        div.style.borderLeftColor = "#000";
-                    }
-                    if(tamaño === 9) {
-                        if((i >= 18 && i <= 26) || (i >= 45  && i <= 53)) div.style.borderBottom = "4px solid #000"; 
-                    };
-                    if(tamaño === 12) {
-                        if((i >= 24 && i <= 35) || (i >= 60  && i <= 71) || (i >= 96 && i <= 107)) div.style.borderBottom = "4px solid #000"; 
-                    };
-                    // clon.value= i;
-                    clon.style.color = "blue";
-                    div.appendChild(clon);
-                    fragmento.insertBefore(div, fragmento.childNodes[fragmento.childNodes.length]);
-                }
-
-                container.style.backgroundSize =  "0%";
-            
-                container.appendChild(fragmento);
-                container.style.gridTemplateRows = `repeat(${tamaño}, 1fr)`;
-                container.style.gridTemplateColumns = `repeat(${tamaño}, 1fr)`;
-                forms.submitClick.value = "Nuevo Juego";
-                
-                
-                const numberPosition = (posicion,valores,arrays) => {
-                    const inputContainer = container.querySelectorAll("input");
-                    let posicions = posicion.split(",");
-                    let valor = valores.split(",");  
+                    if(container.matches("div")) container.innerHTML = "";
                     
-                    inputContainer.forEach(el => el.value = "");
+                    const fragmento = d.createDocumentFragment(),
+                        template = d.querySelector("template"),
+                        inputs = template.content.querySelector("input");
 
-                    posicions.forEach((el,index) => {          
-                        let numero = Number(el);
-                        inputContainer[numero].value = valor[index];
-                    });
+                    for (let i = 0; i < tamaño*tamaño; i++) {
+                        inputs.name = i;
+                        inputs.style.minWidth = "contain";
+                        if(tamaño === 12) inputs.maxLength = 2;  
+                        const div =  d.createElement("div"),
+                        clon = d.importNode(inputs,true);
+                        div.classList.add("grids");
+                        div.style.backgroundColor = "white";  
+                        // div.style.color = "red";
+                        if(i % 3 === 0) {
+                            div.style.borderLeftWidth = "4px";
+                            div.style.borderLeftColor = "#000";
+                        }
+                        if(tamaño === 9) {
+                            if((i >= 18 && i <= 26) || (i >= 45  && i <= 53)) div.style.borderBottom = "4px solid #000"; 
+                        };
+                        if(tamaño === 12) {
+                            if((i >= 24 && i <= 35) || (i >= 60  && i <= 71) || (i >= 96 && i <= 107)) div.style.borderBottom = "4px solid #000"; 
+                        };
+                        // clon.value= i;
+                        clon.style.color = "blue";
+                        div.appendChild(clon);
+                        fragmento.insertBefore(div, fragmento.childNodes[fragmento.childNodes.length]);
+                    }
 
-                    arrays[0].forEach(el => {
-                        inputContainer[el].readOnly = true;
-                        inputContainer[el].style.color = "#000";
-                    })
-                }
+                    container.style.backgroundSize =  "0%";
+                
+                    container.appendChild(fragmento);
+                    container.style.gridTemplateRows = `repeat(${tamaño}, 1fr)`;
+                    container.style.gridTemplateColumns = `repeat(${tamaño}, 1fr)`;
+                    forms.submitClick.value = "Nuevo Juego";
+                    
+                    
+                    const numberPosition = (posicion,valores,arrays) => {
+                        const inputContainer = container.querySelectorAll("input");
+                        let posicions = posicion.split(",");
+                        let valor = valores.split(",");  
                         
-                numberPosition(indexCasillasLocal,valoresCasillasLocal,arr[`arr${tamaño}`][dificultad][numberSudo]);
-                numberSudoku.innerHTML = `Sudoku ${numberSudo + 1} de ${arr[`arr${tamaño}`][dificultad].length} del nivel ${dificultad}`; 
-                btn.textContent = "Guardar Ultimo Juego";
+                        inputContainer.forEach(el => el.value = "");
+
+                        posicions.forEach((el,index) => {          
+                            let numero = Number(el);
+                            inputContainer[numero].value = valor[index];
+                        });
+
+                        arrays[0].forEach(el => {
+                            inputContainer[el].readOnly = true;
+                            inputContainer[el].style.color = "#000";
+                        })
+                    }
+                            
+                    numberPosition(indexCasillasLocal,valoresCasillasLocal,arr[`arr${tamaño}`][dificultad][Number(numberSudo) -1]);
+                    numberSudoku.innerHTML = `Sudoku ${numberSudo} de ${arr[`arr${tamaño}`][dificultad].length} del nivel ${dificultad}`; 
+                    btn.textContent = "Guardar Ultimo Juego";
+                }                
+                
                 
 
             } else {

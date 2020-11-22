@@ -20,13 +20,14 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
     }
 
 
+    /************************************************************************************************************************************************************** */
+
+    /****************************************************************************************************************************************** */
+    
 
 
 
 
-
-
-/************************************************************************************************************************************************************** */
 
      /******************* funcion de dar los valores estaticos ****************************************************************************************** */
         
@@ -50,7 +51,9 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
         const fragmento = d.createDocumentFragment(),
         form = d.getElementById(empezarDidicultad),
         template = d.querySelector("template"),
-        inputs = template.content.querySelector("input");
+        inputs = template.content.querySelector("input"),
+        dif = localStorage.getItem("dificultad"),
+        tam = localStorage.getItem("tamaño");
         /************************************************************************************************************************************* */
         
         
@@ -60,7 +63,19 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
         (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
         /****************************************************************************************************************************************************** */
         if(cont < 0 ) cont = 0;
-        // if(cont)
+        console.log(container);
+        if(form.submitClick.value === "Empezar Partida") {
+            if(tammaño === Number(tam) && form.dificultad.value === dif) {
+                let texto = dif.charAt(0).toUpperCase().concat(dif.substring(1,dif.length));
+                let existe = localStorage.getItem(`sud${tam}${texto}`);
+                if(existe !== null) {
+                    // console.log(existe.charAt(existe.length-1))
+                    cont = Number(existe.charAt(existe.length-1));
+                    console.log(cont);
+                    console.log(typeof cont);
+                }
+            }
+        }
         /**************** creacion de nuestro container ****************************************************************************************************************************** */
         
         if(e.target === form){

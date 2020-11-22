@@ -5,15 +5,59 @@ export default function correccionFinal(btnFin){
 
     const btn = d.getElementById(btnFin),
         contents = d.querySelector(".content-grid");
+
+    const localSudos = (num,dif,tamaño) => {
+        let sudo9Facil = localStorage.getItem("sud9Facil"),
+        sudo9Dificil = localStorage.getItem("sud9Dificil"),
+        sudo12Facil = localStorage.getItem("sud12Facil"),
+        sudo12Dificil = localStorage.getItem("sud12Dificil");
+        
+        const anadirLocalS = (variable,sudoco,numero,tam,difl) => {
+            let sudo = [],reducir,tamaño,dificultad;
+            if(!variable) {
+                sudo.push(numero);
+                localStorage.setItem(sudoco,sudo);
+                return
+            }; 
+                variable.split(",").forEach(el => sudo.push(el));
+                sudo.push(numero);
+                sudo.sort((a,b)=> a -b);
+                reducir = [...new Set(sudo)];
+                localStorage.setItem(sudoco,reducir);
+                tamaño = localStorage.setItem("tamaño",tam);
+                dificultad = localStorage.setItem("dificultad",difl);
+        }
+
+        if(tamaño === 9 && dif === "facil") {
+            anadirLocalS(sudo9Facil,"sud9Facil",num,tamaño,dif);
+            return;
+            
+        };
+
+        if(tamaño === 9 && dif === "dificil") {
+            anadirLocalS(sudo9Dificil,"sud9Dificil",num,tamaño,dif);
+            return;
+        };
+        
+        if(tamaño === 12 && dif === "facil") {
+            anadirLocalS(sudo12Facil,"sud12Facil",num,tamaño,dif);
+            return; 
+        };
+        
+        if(tamaño === 12 && dif === "dificil") {
+            anadirLocalS(sudo12Dificil,"sud12Dificil",num,tamaño,dif);
+            return; 
+        };
+    }
     
     
     d.addEventListener("click", e => {
         const  inputs = contents.querySelectorAll("input"),
-            filasColumnas = (inputs.length === 81)? 9 : 12;
+        filasColumnas = (inputs.length === 81)? 9 : 12;
         let llenado = true,
             arrays2 = [],
             arrays = [];
-
+            
         if(e.target === btn) {
             inputs.forEach( el => {
                 if(!el.value) {
@@ -62,16 +106,22 @@ export default function correccionFinal(btnFin){
                     arrays = [];
                 }
             }
-
+            
             llenado = (llenado === 0)? true:false;
-
+            
             if(llenado) {
                 const time = d.querySelector(".count-p2").textContent;
                 const seguirReto = confirm(`Grandioso has pasado este reto con un tiempo de ${time} Segdos.\nAhora deseas comenzar otro reto: `);
-                if(seguirReto) d.getElementById("empezarDificultad").submitClick.click();
+                if(seguirReto) {
+                    const texto = d.getElementById("numeroSudoku").textContent.split(" ");
+                    let num = Number(texto[1])-1,
+                        dif = texto[texto.length-1];
+                    localSudos(num,dif,filasColumnas);                    
+                    d.getElementById("empezarDificultad").submitClick.click();  
+                }                 
                 return;
             }
-
+            
             if(!llenado) {
                 alert(`Tienes varios errores errores`);
                 setTimeout(()=> {
@@ -79,10 +129,10 @@ export default function correccionFinal(btnFin){
                         el.style.backgroundColor = "white"
                         el.style.border = "none";
                     })
-
+                    
                 },3000);
                     
-
+                
             }
             
         }
