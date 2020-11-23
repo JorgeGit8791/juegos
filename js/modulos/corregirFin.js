@@ -6,7 +6,7 @@ export default function correccionFinal(btnFin){
     const btn = d.getElementById(btnFin),
         contents = d.querySelector(".content-grid");
 
-    const localSudos = (num,dif,tamaño) => {
+    const localSudos = (num,dif,tamaño,maxNumber) => {
         let sudo9Facil = localStorage.getItem("sud9Facil"),
         sudo9Dificil = localStorage.getItem("sud9Dificil"),
         sudo12Facil = localStorage.getItem("sud12Facil"),
@@ -21,8 +21,14 @@ export default function correccionFinal(btnFin){
             }; 
                 variable.split(",").forEach(el => sudo.push(el));
                 sudo.push(numero);
-                sudo.sort((a,b)=> a -b);
+                sudo.sort((a,b)=> a - b);
                 reducir = [...new Set(sudo)];
+                console.log(reducir);
+                // if()
+                // reducir.forEach((el,index,maxNumber) =>{
+                //     if(el === index) continue;
+                    
+                // })
                 localStorage.setItem(sudoco,reducir);
                 tamaño = localStorage.setItem("tamaño",tam);
                 dificultad = localStorage.setItem("dificultad",difl);
@@ -115,8 +121,9 @@ export default function correccionFinal(btnFin){
                 if(seguirReto) {
                     const texto = d.getElementById("numeroSudoku").textContent.split(" ");
                     let num = Number(texto[1])-1,
-                        dif = texto[texto.length-1];
-                    localSudos(num,dif,filasColumnas);                    
+                        dif = texto[texto.length-1],
+                        numMax = Number(texto[3]) - 1;
+                    localSudos(num,dif,filasColumnas,numMax);                    
                     d.getElementById("empezarDificultad").submitClick.click();  
                 }                 
                 return;

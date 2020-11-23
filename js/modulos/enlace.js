@@ -12,7 +12,7 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
 
         inputContent.forEach(el => el.value = "");
         // inputContainer.forEach((el,index)=>el.value = index)
-        arr[2].forEach((el, index) => {            
+        arr[1].forEach((el, index) => {       
             inputContent[index].value = el;
             inputContent[index].readOnly = true;
             inputContent[index].style.color = "#000";
@@ -36,8 +36,8 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
 
         inputContainer.forEach(el => el.value = "");
         // inputContainer.forEach((el,index)=>el.value = index)
-        arr[0].forEach((el, index) => {            
-            inputContainer[el].value = arr[1][index];
+        arr[0].forEach(el => {            
+            inputContainer[el].value = arr[1][el];
             inputContainer[el].readOnly = true;
             inputContainer[el].style.color = "#000";
         });
@@ -63,14 +63,13 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
         (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
         /****************************************************************************************************************************************************** */
         if(cont < 0 ) cont = 0;
-        console.log(container);
         if(form.submitClick.value === "Empezar Partida") {
             if(tammaño === Number(tam) && form.dificultad.value === dif) {
                 let texto = dif.charAt(0).toUpperCase().concat(dif.substring(1,dif.length));
                 let existe = localStorage.getItem(`sud${tam}${texto}`);
                 if(existe !== null) {
                     // console.log(existe.charAt(existe.length-1))
-                    cont = Number(existe.charAt(existe.length-1));
+                    cont = Number(existe.charAt(existe.length-1))+1;
                     console.log(cont);
                     console.log(typeof cont);
                 }
