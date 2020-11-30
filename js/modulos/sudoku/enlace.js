@@ -60,7 +60,7 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
         /**********  dar valor del tamaño de nuesto container sudoku ************************************************************************************** */
         
         let tammaño;
-        (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
+        (form.tamaño.value === "smoll")? tammaño = 9 : tammaño = 16;
         /****************************************************************************************************************************************************** */
         if(cont < 0 ) cont = 0;
         if(form.submitClick.value === "Empezar Partida") {
@@ -68,10 +68,8 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
                 let texto = dif.charAt(0).toUpperCase().concat(dif.substring(1,dif.length));
                 let existe = localStorage.getItem(`sud${tam}${texto}`);
                 if(existe !== null) {
-                    // console.log(existe.charAt(existe.length-1))
-                    cont = Number(existe.charAt(existe.length-1))+1;
-                    console.log(cont);
-                    console.log(typeof cont);
+                    cont = Number(existe.charAt(existe.length-1))+1;  
+                    
                 }
             }
         }
@@ -84,21 +82,25 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
             for (let i = 0; i < tammaño*tammaño; i++) {
                 inputs.name = i;
                 inputs.style.minWidth = "contain";
-                if(tammaño === 12) inputs.maxLength = 2;  
+                if(tammaño === 16) inputs.maxLength = 2;  
                 const div =  d.createElement("div"),
                 clon = d.importNode(inputs,true);
                 div.classList.add("grids");
                 div.style.backgroundColor = "white";  
                 // div.style.color = "red";
-                if(i % 3 === 0) {
-                    div.style.borderLeftWidth = "4px";
-                    div.style.borderLeftColor = "#000";
-                }
                 if(tammaño === 9) {
+                    if(i % 3 === 0) {
+                        div.style.borderLeftWidth = "4px";
+                        div.style.borderLeftColor = "#000";
+                    }
                     if((i >= 18 && i <= 26) || (i >= 45  && i <= 53)) div.style.borderBottom = "4px solid #000"; 
                 };
-                if(tammaño === 12) {
-                    if((i >= 24 && i <= 35) || (i >= 60  && i <= 71) || (i >= 96 && i <= 107)) div.style.borderBottom = "4px solid #000"; 
+                if(tammaño === 16) {
+                    if(i % 4 === 0) {
+                        div.style.borderLeftWidth = "4px";
+                        div.style.borderLeftColor = "#000";
+                    }
+                    if((i >= 48 && i <= 63) || (i >= 112  && i <= 127) || (i >= 176 && i <= 191)) div.style.borderBottom = "4px solid #000"; 
                 };
                 // clon.value= i;
                 clon.style.color = "blue";
@@ -126,7 +128,7 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
             cargarSudo = d.getElementById(cargar),
             forms = d.getElementById(empezarDidicultad);
             let tammaño;
-            (forms.tamaño.value === "smoll")? tammaño = 9 : tammaño = 12;
+            (forms.tamaño.value === "smoll")? tammaño = 9 : tammaño = 16;
             
         if(e.target === cargarSudo) {
             let existirEnLocal = Number(localStorage.getItem("numeroSudoku"))-1;

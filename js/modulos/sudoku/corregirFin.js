@@ -23,34 +23,32 @@ export default function correccionFinal(btnFin){
                 sudo.push(numero);
                 sudo.sort((a,b)=> a - b);
                 reducir = [...new Set(sudo)];
-                console.log(reducir);
-                // if()
-                // reducir.forEach((el,index,maxNumber) =>{
-                //     if(el === index) continue;
-                    
-                // })
                 localStorage.setItem(sudoco,reducir);
                 tamaño = localStorage.setItem("tamaño",tam);
                 dificultad = localStorage.setItem("dificultad",difl);
-        }
-
-        if(tamaño === 9 && dif === "facil") {
-            anadirLocalS(sudo9Facil,"sud9Facil",num,tamaño,dif);
-            return;
+            }
+            
+            if(tamaño === 9 && dif === "facil") {
+                localStorage.setItem("facil-9Maxsudo",maxNumber);
+                anadirLocalS(sudo9Facil,"sud9Facil",num,tamaño,dif);
+                return;
             
         };
 
         if(tamaño === 9 && dif === "dificil") {
+            localStorage.setItem("dificil-9Maxsudo",maxNumber);
             anadirLocalS(sudo9Dificil,"sud9Dificil",num,tamaño,dif);
             return;
         };
         
-        if(tamaño === 12 && dif === "facil") {
+        if(tamaño === 16 && dif === "facil") {
+            localStorage.setItem("facil-12Maxsudo",maxNumber);
             anadirLocalS(sudo12Facil,"sud12Facil",num,tamaño,dif);
             return; 
         };
         
-        if(tamaño === 12 && dif === "dificil") {
+        if(tamaño === 16 && dif === "dificil") {
+            localStorage.setItem("dificil-12Maxsudo",maxNumber);
             anadirLocalS(sudo12Dificil,"sud12Dificil",num,tamaño,dif);
             return; 
         };
@@ -59,7 +57,7 @@ export default function correccionFinal(btnFin){
     
     d.addEventListener("click", e => {
         const  inputs = contents.querySelectorAll("input"),
-        filasColumnas = (inputs.length === 81)? 9 : 12;
+        filasColumnas = (inputs.length === 81)? 9 : 16;
         let llenado = true,
             arrays2 = [],
             arrays = [];
