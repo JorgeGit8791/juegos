@@ -4,6 +4,7 @@ export default function escrituraMovimiento(e,input,caja) {
     const inputs = d.querySelectorAll(input),
     cajaGrids = d.querySelector(caja);
     
+    
     // console.log(inputs)
     const direccion = (e,dir) => {
         const position = Number(e.target.name);

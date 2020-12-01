@@ -114,4 +114,8 @@ document.addEventListener("DOMContentLoaded",(e) => {
 
 document.addEventListener("keyup", (e) => {
     escrituraMovimiento(e,".grids input",".content-grid");
+});
+
+document.addEventListener("touchstart", e => {
+    escrituraMovimiento(e,".grids input",".content-grid");
 })

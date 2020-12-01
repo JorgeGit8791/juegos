@@ -5,7 +5,6 @@ const d = document,
 export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,cargar) {
     const numberSudoku = d.getElementById(numberSudo);
 
-
     /********************  funcion resolver ********************************************************************************************************* */
     const resolverSudo = arr => {
         const inputContent = container.querySelectorAll("input");
@@ -18,7 +17,6 @@ export default function sudoku(empezarDidicultad, arrays,numberSudo,respuesta,ca
             inputContent[index].style.color = "#000";
         });
     }
-
 
     /************************************************************************************************************************************************************** */
 
